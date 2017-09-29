@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   belongs_to :rolable, polymorphic: true
+  has_many :task
   validates :first_name, presence: true
   validates :email, uniqueness: true
   validates_format_of :email, with: Devise.email_regexp
