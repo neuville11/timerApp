@@ -1,0 +1,13 @@
+<h1>Student</h1>
+<div>
+  <label>Name: </label>
+    <p> <%= @student.user.name %> </p>
+  <label>Account number: </label>
+    <p> <%= @student.account_number %> </p>
+</div>
+<div>
+  <h2>Create new task</h2>
+    <%= render "layouts/tasks_form" %>
+  <h2>Tasks</h2>
+    <%= render "layouts/tasks_table" %> 
+</div>

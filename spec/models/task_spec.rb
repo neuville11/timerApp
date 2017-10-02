@@ -16,7 +16,7 @@ describe Task do
   it "verify task has user id" do
     expect(task.user_id).to eq 1
   end
-1
+
   it "creates a task" do
     my_task = Task.create(id: 1, name: "Tarea 1", user_id: user.id)
     expect(my_task).to be_a(Task)

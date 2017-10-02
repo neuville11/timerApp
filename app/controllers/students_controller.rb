@@ -10,6 +10,8 @@ class StudentsController < ApplicationController
 
   def show
     @student = Student.find(params[:id])
+    @tasks = @student.user.task
+    @task = Task.new
   end
 
   def create

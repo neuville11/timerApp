@@ -1,0 +1,11 @@
+<div>
+  <p>Name: <%= @teacher.user.name %></p>
+  <p>Professional ID: <%= @teacher.professional_id %></p>
+  <p>Gender: <%= @teacher.gender %></p>
+</div>
+<div>
+  <h2>Create new task</h2>
+    <%= render "layouts/tasks_form" %>
+  <h2>Tasks</h2>
+    <%= render "layouts/tasks_table" %> 
+</div>
