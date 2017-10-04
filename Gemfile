@@ -34,6 +34,9 @@ gem 'devise_token_auth'
 gem 'rspec-rails'
 gem 'shoulda-matchers'
 gem 'factory_girl_rails'
+gem 'kaminari'
+gem 'bootstrap-sass', '~> 3.3.6'
+gem 'jquery-rails'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

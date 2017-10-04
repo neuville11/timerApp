@@ -1,13 +1,18 @@
 <div>
   <% @tasks.each do |task|%>
-    <div class="task-container">
-      <h2> <%= task.name %> </h2>
-      <p> Status: <%= task.status%> </p>
-      <% if task.status == "ended" %>
-        <p> Total time: <%= task.total_time %> </p>
+    <div class="card container">
+      <h2 class="card-header"> <%= task.name %> </h2>
+      <div class="card-body">
+        <p> Status: <%= task.status%> </p>
+        <% if task.status == "finished" %>
+          <p> Task total time: <%= task.task_total_time %> </p>
         <% else %>
-        <p> <%= format_start_hour(task.created_at) %> </p>
-      <% end %>
+          <p> <%= format_start_hour(task.created_at) %> </p>
+          <p><%= link_to "Finish task", api_v1_task_path(task), method: :put,
+            class: 'btn btn-primary' %></p>
+        <% end %>
+      </div>
     </div>
   <% end %>
+  <div> <%= paginate @tasks %> </div>
 </div>

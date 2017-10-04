@@ -1,13 +1,24 @@
-<h1>Student</h1>
-<div>
-  <label>Name: </label>
-    <p> <%= @student.user.name %> </p>
-  <label>Account number: </label>
-    <p> <%= @student.account_number %> </p>
-</div>
-<div>
-  <h2>Create new task</h2>
-    <%= render "layouts/tasks_form" %>
-  <h2>Tasks</h2>
-    <%= render "layouts/tasks_table" %> 
+<div class="container-fluid">
+  <h1>Student</h1>
+  <div>
+    <label>Name: </label>
+      <p> <%= @student.user.name %> </p>
+    <label>Account number: </label>
+      <p> <%= @student.account_number %> </p>
+      <%= link_to "Edit", edit_student_path(@student),
+        class: 'btn btn-primary'%>
+  </div>
+  <div>
+    <h2>Create new task</h2>
+      <%= render "layouts/tasks_form" %>
+    <h2>Tasks</h2>
+      <%= render "layouts/tasks_table" %> 
+  </div>
+
+  <div>
+    <h1>Total time of tasks</h1>
+    <p>TOTAL HOURS CHARGED: 
+      <%= total_hours_charged(@tasks.where(status: "finished"))%> Hrs.
+    </p>
+  </div>
 </div>

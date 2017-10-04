@@ -1,0 +1,14 @@
+<%= f.fields_for :user do |fu| %>
+  <div>
+    <%= fu.label :first_name %>
+    <%= fu.text_field :first_name, class: 'form-control' %>
+  </div>
+  <div>
+    <%= fu.label :last_name %>
+    <%= fu.text_field :last_name, class: 'form-control' %>
+  </div>
+  <div>
+    <%= fu.label :email %>
+    <%= fu.text_field :email, class: 'form-control' %>
+  </div>
+<% end %>

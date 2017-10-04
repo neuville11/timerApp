@@ -10,12 +10,12 @@ class StudentsController < ApplicationController
 
   def show
     @student = Student.find(params[:id])
-    @tasks = @student.user.task
+    @tasks = @student.user.task.page params[:page]
     @task = Task.new
   end
 
   def create
-    @user = User.create(resource_params)
+    @user = User.create(student_params)
     if @user.save
       redirect_to :index
     else
@@ -23,9 +23,21 @@ class StudentsController < ApplicationController
     end
   end
 
+  def edit
+    @student = Student.find(params[:id])
+  end
+
+  def update
+    @student = Student.find(params[:id])
+    if @student.update(student_params)
+      redirect_to student_path(current_user.rolable_id)
+    else
+      redirect_to student_path(current_user.rolable_id)
+    end
+  end
 
 private
-   def resource_params
+   def student_params
     params.require(:student).permit(
       :account_number,
       :blood_type,

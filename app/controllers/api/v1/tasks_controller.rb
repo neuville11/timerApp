@@ -7,10 +7,17 @@ before_action :set_task
   def create
     @task = Task.create(task_params)
     if @task.save
-      current_user.rolable_type == "Student" ? redirect_to student_path :
-      redirect_to teacher_path
+      redirect_to student_path(current_user.rolable_id)
     else
-      redirect_back
+      redirect_to student_path(current_user.rolable_id)
+    end
+  end
+
+  def update
+    if @task.update(status: "finished", finished_at: Time.zone.now)
+      redirect_to student_path(current_user.rolable_id)
+    else  
+      redirect_to student_path(current_user.rolable_id)
     end
   end
 

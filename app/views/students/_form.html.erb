@@ -1,0 +1,12 @@
+<%= render "layouts/user_form", f: f %>
+<div>
+  <%= f.label :account_number %>
+  <%= f.text_field :account_number, class: 'form-control' %>
+</div>
+<div>
+  <%= f.label :blood_type %>
+  <%= f.text_field :blood_type, class: 'form-control' %>
+</div>
+<div>
+  <%= f.submit "submit", class: 'btn btn-success' %>
+</div>
