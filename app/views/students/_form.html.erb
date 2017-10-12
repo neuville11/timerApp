@@ -1,4 +1,32 @@
-<%= render "layouts/user_form", f: f %>
+<%= f.fields_for :user do |fu| %>
+  <div class="field">
+    <%= fu.label :first_name %>
+    <%= fu.text_field :first_name, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= fu.label :last_name %>
+    <%= fu.text_field :last_name, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= fu.label :email %>
+    <%= fu.text_field :email, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "off" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+  </div>
+<% end %>
 <div>
   <%= f.label :account_number %>
   <%= f.text_field :account_number, class: 'form-control' %>

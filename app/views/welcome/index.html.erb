@@ -1,11 +1,62 @@
-<p class="navbar-text pull-right">
-<% if user_signed_in? %>
-  Logged in as <strong><%= current_user.email %></strong>.
-  <%= link_to 'Edit profile', edit_user_registration_path, class: 'navbar-link' %> |
-  <%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'navbar-link'  %>
-<% else %>
-  <%= link_to "Sign up", new_user_registration_path, class: 'navbar-link'  %> |
-  <%= link_to "Login", new_user_session_path, class: 'navbar-link'  %>
-<% end %>
-</p>
-<h1>HOLA</h1>
+  <p class="navbar-text pull-right">
+  <% if user_signed_in? %>
+    Logged in as <strong><%= current_user.email %></strong>.
+    <%= link_to 'Edit profile', edit_user_registration_path, class: 'navbar-link' %> |
+    <%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'navbar-link'  %>
+  <% else %>
+    <%= link_to "Sign up", new_user_registration_path, class: 'navbar-link'  %> |
+    <%= link_to "Login", new_user_session_path, class: 'navbar-link'  %>
+  <% end %>
+  </p>
+  <h1>Welcome!</h1>
+  <div>
+    <h2>Register as Student</h2>
+    <%= form_for @student, url: students_url, method: :post do |f| %>
+      <%= f.fields_for :user do |fu| %>
+        <div class="field">
+          <%= fu.label :first_name %>
+          <%= fu.text_field :first_name, class: 'form-control' %>
+        </div>
+
+        <div class="field">
+          <%= fu.label :last_name %>
+          <%= fu.text_field :last_name, class: 'form-control' %>
+        </div>
+
+        <div class="field">
+          <%= fu.label :email %>
+          <%= fu.text_field :email, class: 'form-control' %>
+        </div>
+
+        <div class="field">
+          <%= f.label :password %>
+          <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %><br />
+          <%= f.password_field :password, autocomplete: "off" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :password_confirmation %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "off" %>
+        </div>
+      <% end %>
+  <div>
+    <%= f.label :account_number %>
+    <%= f.text_field :account_number, class: 'form-control' %>
+  </div>
+  <div>
+    <%= f.label :blood_type %>
+    <%= f.text_field :blood_type, class: 'form-control' %>
+  </div>
+  <div>
+    <%= f.submit "submit", class: 'btn btn-success' %>
+  </div>
+    <% end %>
+  </div>
+  <div>
+    <h2>Register as Teacher</h2>
+    <%= form_for @teacher, url: teachers_path, method: :post do |f| %>
+      <%= render "teachers/form", f: f %>
+    <% end %>
+  </div>

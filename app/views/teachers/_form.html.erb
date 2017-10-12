@@ -27,3 +27,14 @@
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 <% end %>
+<div>
+  <%= f.label :professional_id %>
+  <%= f.text_field :professional_id, class: 'form-control' %>
+</div>
+<div>
+  <%= f.label :gender %>
+  <%= f.text_field :gender, class: 'form-control' %>
+</div>
+<div>
+  <%= f.submit "submit", class: 'btn btn-success' %>
+</div>
