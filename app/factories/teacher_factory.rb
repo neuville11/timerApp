@@ -1,5 +1,5 @@
 class TeacherFactory
   def self.build
-    teacher = Teacher.new
+    teacher = { Teacher.new }
   end
 end

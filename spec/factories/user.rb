@@ -6,6 +6,6 @@ FactoryGirl.define do
     email "ulises.garcia.urzua+user@gmail.com"
     password "123456"
     password_confirmation "123456"
-    rolable User.new
+    rolable { User.new }
   end
 end
